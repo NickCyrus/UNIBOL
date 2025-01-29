@@ -1,0 +1,1 @@
+php artisan iseed users,modulesapps,profpermissions,states,permissions,listas,configs --database=mysql --force

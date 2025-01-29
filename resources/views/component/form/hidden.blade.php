@@ -1,0 +1,2 @@
+<input type="hidden" autocomplete="{{$autocomplete ?? ''}}" value="{{$info->$name ?? ''}}" name="{{$name ?? ''}}" id="{{$name ?? ''}}" class="{{$classInput ?? ''}}" @isset($required) required  @endisset >
+  
