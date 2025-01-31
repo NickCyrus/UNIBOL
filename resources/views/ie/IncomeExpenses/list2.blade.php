@@ -13,7 +13,7 @@
                                 }
                             }
                         ?>
-                    </select>                        
+                    </select>
                 </div>
                 <div class="col-md-3">
                     <select class="form-control" name="filter_tipo_rubro">
@@ -27,11 +27,11 @@
                                 }
                             }
                         ?>
-                    </select>                        
+                    </select>
                 </div>
                 <div class="col-md-3">
                     <select class="form-control" name="filter_periodo">
-                        <option value="" selected>Filtrar Periodo</option> 
+                        <option value="" selected>Filtrar Periodo</option>
                         <?php
                             $options  = callmod('FinancialSituation\FinancialSituationeModel')::options();
                             if ( $options){
@@ -41,7 +41,7 @@
                                 }
                             }
                         ?>
-                    </select>                        
+                    </select>
                 </div>
                 <div class="col-md-3">
                         <button class="btn btn-sm btn-info">Filtrar</button>
@@ -51,14 +51,14 @@
 <table class="table table-sm">
     <thead>
         <tr>
-            <th>RUBRO</th>
+            <th>MATERIAL</th>
            <!-- <th>ORDEN</th>  !-->
-            <th>Tipo de rubro</th>
-            <th>ORDEN EEFF[RUBRO]</th>
+            <th>NOMBRE MATERIAL</th>
+            {{-- <th>ORDEN EEFF[RUBRO]</th>
             <!-- <th>ORDEN EEFF[N°]</th> !-->
             <th>Notas - Auxiliar</th>
             <th class="text-right">Saldo</th>
-            <th>Periodo</th>
+            <th>Periodo</th> --}}
         </tr>
     </thead>
     <tbody>
@@ -77,11 +77,11 @@
             @endforeach
         @endif
     </tbody>
-    
+
 </table>
     <div class="d-blog my-3 justify-content-center">
         @if ($list->count()) {!! $list->withQueryString()->links() !!} @endif
     </div>
 <script>
-     
+
 </script>

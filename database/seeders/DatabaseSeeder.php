@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ListasTableSeeder::class);
         $this->call(ConfigsTableSeeder::class);
         $this->call(PruebaTableSeeder::class);
-        $this->call(AcEnterpriseRelsTableSeeder::class);
+      //  $this->call(AcEnterpriseRelsTableSeeder::class);
         $this->call(ActivityLogTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(ContractsTableSeeder::class);
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
         $this->call(IeMovementTypesTableSeeder::class);
         $this->call(IeSubC2CostCentersTableSeeder::class);
         $this->call(IeSubCostcentersTableSeeder::class);
-        $this->call(IeThirdClasificationsTableSeeder::class);
+        // $this->call(IeThirdClasificationsTableSeeder::class);
         $this->call(IeThirdpartiesTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
         $this->call(JobsTableSeeder::class);

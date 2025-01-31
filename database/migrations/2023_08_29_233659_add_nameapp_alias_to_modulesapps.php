@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('modulesapps', function (Blueprint $table) {
             //
-            $table->string('nameapp_alias',255)->after('nameapp');
-            
+            $table->string('nameapp_alias',255)->nullable()->after('nameapp');
+
         });
     }
 
