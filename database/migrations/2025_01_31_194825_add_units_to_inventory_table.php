@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('inventories', function (Blueprint $table) {
             $table->decimal('kg', 8, 2)->nullable();
             $table->integer('cm')->nullable();
-            $table->decimal('lb', 8, 2)->nullable();
+            $table->string('lb')->nullable();
             $table->integer('g')->nullable();
         });
     }
