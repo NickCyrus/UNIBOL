@@ -7,6 +7,7 @@
                     <th>Centimetros "CM"</th>
                     <th>Libras "LB"</th>
                     <th>Gramos "G"</th>
+                    <th>Stock</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,6 +19,7 @@
                         <td>{{ $inventory->cm }}</td>
                         <td>{{ $inventory->lb }}</td>
                         <td>{{ $inventory->g }}</td>
+                        <td>{{ $inventory->stock }}</td>
                     </tr>
                 @endforeach
             </tbody>

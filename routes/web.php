@@ -22,6 +22,7 @@ use App\Http\Controllers\ie\IeBankBalancesController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\itemsController;
 use App\Http\Controllers\materialesController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\prestecController;
 use App\Http\Controllers\salariesController;
 use App\Http\Controllers\salariesnotownerController;
@@ -118,18 +119,16 @@ Route::group(['middleware' => ['auth','ControlModules'] ], function () {
     Route::group(['prefix'=>'inventories'], function(){
         $slug= 'inventories';
         Route::get('/', [InventoryController::class,'index'])->name($slug);
-        Route::get('/new', [InventoryController::class,'new'])->name("{$slug}.new");
-        Route::match(['get', 'post'], '{id}/edit/', [InventoryController::class,'edit'])->name("{$slug}.edit");
-        Route::post('/save/', [InventoryController::class,'save'])->name("{$slug}.save");
-        Route::get('{id}/delete', [InventoryController::class,'del'])->name("{$slug}.delete");
-
-
         Route::match(['get', 'post'], '/excelClear', [InventoryController::class,'excelClear'])->name("{$slug}.excelClear");
         Route::match(['get', 'post'], '/excelUpdate', [InventoryController::class,'excelUpdate'])->name("{$slug}.excelUpdate");
-
-
     });
 
+    Route::group(['prefix'=>'orders'], function(){
+        $slug= 'orders';
+        Route::get('/', [OrderController::class,'index'])->name($slug);
+        Route::match(['get', 'post'], '/importExcel', [OrderController::class,'importExcel'])->name("{$slug}.importExcel");
+        Route::match(['get', 'post'], '/excelUpdate', [OrderController::class,'excelUpdate'])->name("{$slug}.excelUpdate");
+    });
 
 });
 

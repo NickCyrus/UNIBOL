@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('inventories', function (Blueprint $table) {
-            $table->id();
-            $table->string('id_material')->unique();
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropUnique(['doc_venta']); 
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventories');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->unique('doc_venta');
+        });
     }
 };

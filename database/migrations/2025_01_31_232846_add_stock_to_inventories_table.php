@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('inventories', function (Blueprint $table) {
-            $table->id();
-            $table->string('id_material')->unique();
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('inventories', function (Blueprint $table) {
+            $table->integer('stock')->default(0)->after('g');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventories');
+        Schema::table('inventories', function (Blueprint $table) {
+            $table->dropColumn('stock');
+        });
     }
 };

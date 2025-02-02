@@ -15,7 +15,8 @@ class Inventory extends Model
         'kg',
         'cm',
         'lb',
-        'g'
+        'g',
+        'stock',
     ];
 
 
