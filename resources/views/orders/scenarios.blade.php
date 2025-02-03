@@ -145,7 +145,7 @@
                  </div>
 
                  <div class="row mt-3">
-                        <h4>ESCENARIOS</h4>
+                        <h4>GENERACIÓN DE ESCENARIOS</h4>
                         @php
                             $clientes  =  DB::select("SELECT DISTINCT(g) as gramaje FROM orders , inventories WHERE saldo < 0 AND inventories.id_material = orders.id_material  ORDER BY g DESC  LIMIT 1");  
                         @endphp

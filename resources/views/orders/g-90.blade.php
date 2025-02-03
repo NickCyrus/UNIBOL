@@ -17,14 +17,14 @@
                         <td>PAPEL KRAFT STD NAL ES ROLL 90GX70CM</td>
                         <td>1</td>
                         <td>70 CM</td>
-                        <td>70 CM (22.58%)</td>
+                        <td>70 CM </td>
                     </tr>
                     <tr>
                         <td>4000098</td>
                         <td>PAPEL KRAFT PREM ROLL 90GX240CM</td>
                         <td>1</td>
                         <td>240 CM</td>
-                        <td>240 CM (77.42%)</td>
+                        <td>240 CM </td>
                     </tr>
             </tbody>
             <tfoot>
@@ -69,7 +69,7 @@
                     </td>
                       <td>1</td>
                       <td>120 CM</td>
-                      <td>120 CM (38.71%)</td>
+                      <td>120 CM </td>
                   </tr>
                   <tr>
                       <td>4000061</td>
@@ -77,7 +77,7 @@
                     </td>
                       <td>1</td>
                       <td>190 CM</td>
-                      <td>190 CM (61.29%)</td>
+                      <td>190 CM</td>
                   </tr>
           </tbody>
           <tfoot>
