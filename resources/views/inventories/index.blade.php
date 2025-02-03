@@ -7,7 +7,7 @@
         <div class="col">
             <h4 class="fw-bold p-0 mb-0">Inventario</h4>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3 d-flex gap-3">
             <form class="pull-right" action="{{ route('inventories.excelClear') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="load-excel-clear">
@@ -22,6 +22,7 @@
                     <span class="btn btn-sm btn-danger">Actualizar registros</span>
                 </label>
             </form>
+            
         </div>
     </div>
 </div>

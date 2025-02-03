@@ -2,7 +2,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
       <a href="{{route('home')}}" class="">
-        <span class="app-brand-text demo menu-text fw-bolder"><img src="{{asset('assets/img/solare-logo.svg')}}" class="img-fluid"/></span>
+        <span class="app-brand-text demo menu-text fw-bolder"><img src="{{asset('assets/img/unibol-sas.png')}}" class="img-fluid"/></span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

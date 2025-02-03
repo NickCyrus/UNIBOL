@@ -10,6 +10,7 @@ use App\Models\modulesapp;
 use App\Models\profpermission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+USE DB;
 
     function active_user(){
         return Auth::user();

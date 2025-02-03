@@ -14,7 +14,7 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
               <a href="{{ route('login') }}" class="">
-                <span class="app-brand-text demo text-body fw-bolder"><img src="{{asset('assets/img/solare-logo.svg')}}" class="img-fluid"/></span>
+                <span class="app-brand-text demo text-body fw-bolder"><img src="{{asset('assets/img/unibol-sas.png')}}" class="img-fluid"/></span>
               </a>
             </div>
             <!-- /Logo -->
