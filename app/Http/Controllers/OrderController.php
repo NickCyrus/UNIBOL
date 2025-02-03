@@ -30,4 +30,9 @@ class OrderController extends Controller
 
         return redirect()->route('orders')->with('success', 'Pedidos importados correctamente');
     }
+
+    public function scenarios(){
+        return view('orders.scenarios' , ['query'=> Order::query()]);
+    }
+    
 }

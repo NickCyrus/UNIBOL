@@ -8,7 +8,7 @@
                     <th>Marca</th>
                     <th>ID Material</th>
                     <th>Nombre Material</th>
-                    <th>Cantidad Pendiente</th>
+                    <th>Cantidad</th>
                     <th>Stock</th>
                     <th>Saldo</th>
 
@@ -26,7 +26,13 @@
                         <td>{{ $order->material_name }}</td>
                         <td>{{ $order->cantidad_pendiente }}</td>
                         <td>{{ $order->inventory->stock ?? 'N/A' }}</td>
-                        <td>{{ $order->saldo }}</td>
+                        <td>
+                            @if ((int)$order->saldo < 0)
+                                <span class="text-red">{{$order->saldo}}</span>
+                            @else
+                                <span class="text-green">{{$order->saldo}}</span>    
+                            @endif
+                            </td>
                     </tr>
                 @endforeach
             </tbody>

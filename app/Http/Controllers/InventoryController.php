@@ -23,15 +23,14 @@ class InventoryController extends Controller
         if (!$excel) {
             return redirect()->route('inventories')->with('error', 'No se ha seleccionado un archivo');
         }
-
-        Inventory::truncate();
+        if (Inventory::all()->count()) Inventory::truncate();
 
         $import = new InventoryImport();
         Excel::import($import, $excel);
 
         $totalImport = $import->getCount();
 
-        return redirect()->route('inventories')->with('success', "Datos importados correctamente desde cero. Se han importado {$totalImport} registros.");
+        return redirect()->route('inventories')->with('success', "Datos importados correctamente desde cero. Se han importado <b>{$totalImport}</b> registros.");
     }
 
     public function excelUpdate(Request $r)
