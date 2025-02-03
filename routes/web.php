@@ -126,6 +126,7 @@ Route::group(['middleware' => ['auth','ControlModules'] ], function () {
     Route::group(['prefix'=>'orders'], function(){
         $slug= 'orders';
         Route::get('/', [OrderController::class,'index'])->name($slug);
+        Route::get('/escenarios', [OrderController::class,'scenarios'])->name("{$slug}.scenarios");
         Route::match(['get', 'post'], '/importExcel', [OrderController::class,'importExcel'])->name("{$slug}.importExcel");
         Route::match(['get', 'post'], '/excelUpdate', [OrderController::class,'excelUpdate'])->name("{$slug}.excelUpdate");
     });

@@ -25,8 +25,8 @@ return new class extends Migration
             $table->integer('cantidad_pendiente');
             $table->integer('saldo');
             $table->timestamps();
-
-            $table->foreign('id_material')->references('id_material')->on('inventories')->onDelete('cascade');
+            
+            // $table->foreign('id_material')->references('id_material')->on('inventories')->onDelete('cascade');
         });
     }
 
