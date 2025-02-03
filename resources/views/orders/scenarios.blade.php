@@ -144,13 +144,15 @@
                         </div> 
                  </div>
 
-                 <div class="row mt-3">
-                        <h4>GENERACIÓN DE ESCENARIOS</h4>
+                 <div class="row mt-5">
+                        <h4>
+                            <img src="{{asset('assets/img/artificial-intelligence.png')}}"  width="50" />
+                            GENERACIÓN DE ESCENARIOS</h4>
                         @php
                             $clientes  =  DB::select("SELECT DISTINCT(g) as gramaje FROM orders , inventories WHERE saldo < 0 AND inventories.id_material = orders.id_material  ORDER BY g DESC  LIMIT 1");  
                         @endphp
                         @foreach($clientes as $cliente)
-                            <h5>Gramaje {{$cliente->gramaje}}
+                            <h5 class="mt-3">Gramaje {{$cliente->gramaje}}
                              @includeIf("orders.g-{$cliente->gramaje}")
                         @endforeach
                  </div>

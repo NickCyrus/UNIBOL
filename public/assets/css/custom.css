@@ -593,3 +593,7 @@ input{
     background-color: #68a64487 !important ;
     color:#FFF;
 }
+
+.bg-green b{
+    color: #144b2d;
+}
