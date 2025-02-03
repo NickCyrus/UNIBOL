@@ -145,9 +145,11 @@
                  </div>
 
                  <div class="row mt-5">
-                        <h4>
-                            <img src="{{asset('assets/img/artificial-intelligence.png')}}"  width="50" />
-                            GENERACIÓN DE ESCENARIOS</h4>
+                        <center>
+                            <h4>
+                                <img src="{{asset('assets/img/artificial-intelligence.png')}}"  width="50" />
+                                GENERACIÓN DE ESCENARIOS</h4>
+                        </center>
                         @php
                             $clientes  =  DB::select("SELECT DISTINCT(g) as gramaje FROM orders , inventories WHERE saldo < 0 AND inventories.id_material = orders.id_material  ORDER BY g DESC  LIMIT 1");  
                         @endphp
