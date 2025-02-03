@@ -568,6 +568,7 @@ input{
 
 .card-body.info{
     text-align: right;
+    padding: 10px !important;
 }
 
 .card-body.info .leyend {
@@ -579,6 +580,16 @@ input{
 }
 
 .bg-unibol{
-    background-color: #c33c44 !important;
+    background-color: #68a64487 !important;
 }
 
+.table-custom tr th,
+.table-custom tr td{
+        padding: 5px;
+        font-size: 14px;
+}
+
+.bg-green{
+    background-color: #68a64487 !important ;
+    color:#FFF;
+}
