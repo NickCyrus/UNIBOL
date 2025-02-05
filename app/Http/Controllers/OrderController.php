@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\OrderImport;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -32,23 +32,114 @@ class OrderController extends Controller
         return redirect()->route('orders')->with('success', 'Pedidos importados correctamente');
     }
 
-    public function scenarios(){
-        return view('orders.scenarios' , ['query'=> Order::query()]);
+    public function scenarios()
+    {
+        $maxRebobinadora = 315;
+        $maxPapelera = 319;
+        $diametroCliente = 78;
+        $gramajeCliente = 35;
+
+        $escenarios = [];
+        
+        $gramajes = DB::table('orders')
+            ->join('inventories', 'orders.id_material', '=', 'inventories.id_material')
+            ->where('saldo', '<', 0)
+            ->select('inventories.g')
+            ->distinct()
+            ->orderBy('inventories.g')
+            ->get()
+            ->pluck('g');
+
+        foreach ($gramajes as $gramaje) {
+            $escenarios[$gramaje] = $this->procesarGramaje($gramaje, $maxRebobinadora);
+        }
+
+        return view('orders.scenarios', [
+            'escenarios' => $escenarios,
+            'maxRebobinadora' => $maxRebobinadora,
+            'maxPapelera' => $maxPapelera,
+            'diametroCliente' => $diametroCliente,
+            'gramajeCliente' => $gramajeCliente
+        ]);
     }
 
-    static function escenarios($g){
-       $productos = DB::select("SELECT material_name , g , cm FROM orders , inventories
-                    WHERE saldo < 0
-                    AND inventories.id_material = orders.id_material
-                    AND g = $g
-                    ORDER BY g , cm"); 
-        if ($productos){
-            foreach($productos as $producto){
-                $array['cm'][] =  $producto;
+    private function procesarGramaje($gramaje, $maxWidth)
+    {
+        $productos = Order::with('inventory')
+            ->whereHas('inventory', fn($q) => $q->where('g', $gramaje))
+            ->where('saldo', '<', 0)
+            ->get()
+            ->sortByDesc('inventory.cm');
+
+        $grupos = [];
+        $grupoActual = [];
+        $anchoActual = 0;
+
+        foreach ($productos as $producto) {
+            $ancho = $producto->inventory->cm;
+            
+            if (($anchoActual + $ancho) <= $maxWidth) {
+                $grupoActual[] = $producto;
+                $anchoActual += $ancho;
+            } else {
+                $this->completarEspacio($grupoActual, $anchoActual, $productos, $maxWidth);
+                $grupos[] = $this->calcularGrupo($grupoActual, $maxWidth, $gramaje);
+                $grupoActual = [$producto];
+                $anchoActual = $ancho;
             }
-        } 
+        }
 
-        return $array;
+        if (!empty($grupoActual)) {
+            $grupos[] = $this->calcularGrupo($grupoActual, $maxWidth, $gramaje);
+        }
+
+        return $grupos;
     }
-    
+
+    private function completarEspacio(&$grupo, &$ancho, $productos, $maxWidth)
+    {
+        $espacio = $maxWidth - $ancho;
+        $complemento = $productos->filter(fn($p) => 
+            $p->inventory->cm <= $espacio && 
+            !collect($grupo)->contains('id', $p->id)
+        )->sortByDesc('inventory.cm')->first();
+
+        if ($complemento) {
+            $grupo[] = $complemento;
+            $ancho += $complemento->inventory->cm;
+        }
+    }
+
+    private function calcularGrupo($productos, $maxWidth, $gramaje)
+    {
+        $totalCm = collect($productos)->sum(fn($p) => $p->inventory->cm);
+        $eficiencia = ($totalCm / $maxWidth) * 100;
+        
+        $detalles = collect($productos)->map(function($p) use ($maxWidth) {
+            $kg = abs($p->saldo);
+            $largo = ($kg * 1000) / ($p->inventory->g * ($p->inventory->cm / 100));
+            
+            return [
+                'codigo' => $p->id_material,
+                'descripcion' => $p->material_name,
+                'gramaje' => $p->inventory->g,
+                'bobinas' => 1,
+                'ancho' => $p->inventory->cm,
+                'total_cm' => $p->inventory->cm,
+                'costo' => ($p->inventory->cm / $maxWidth) * 100,
+                'cantidad' => $kg,
+                'largo' => $largo,
+                'm2' => ($p->inventory->cm / 100) * $largo,
+                'peso_total' => $kg
+            ];
+        });
+
+        return [
+            'total_cm' => $totalCm,
+            'eficiencia' => $eficiencia,
+            'productos' => $detalles,
+            'peso_total' => $detalles->sum('peso_total'),
+            'gramaje' => $gramaje
+        ];
+    }
 }

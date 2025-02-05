@@ -4,10 +4,10 @@
 
 <div class="card">
     <div class="card-header row">
-        <div class="col">
+        <div class="col-md-9">
             <h4 class="fw-bold p-0 mb-0">Pedidos</h4>
         </div>
-        <div class="col-md-4 d-flex gap-3">
+        <div class="col-md-3 d-flex gap-2">
             <form class="pull-right" action="{{ route('orders.importExcel') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="load-excel-clear">
@@ -15,14 +15,7 @@
                     <span class="btn btn-sm btn-success">Importar desde cero</span>
                 </label>
             </form>
-            <form class="pull-right" action="{{ route('orders.excelUpdate') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <label for="load-excel-update">
-                    <input class="d-none" type="file" name="excel" onchange="this.form.submit()" required accept=".xls,.xlsx" id="load-excel-update" />
-                    <span class="btn btn-sm btn-danger">Actualizar registros</span>
-                </label>
-            </form>
-            <a href="{{route('orders.scenarios')}}" class="btn btn-sm btn-info text-white">Generar encenarios</a>
+            <a href="{{route('orders.scenarios')}}" class="btn btn-sm btn-info text-white">Generar escenarios</a>
         </div>
     </div>
 </div>
