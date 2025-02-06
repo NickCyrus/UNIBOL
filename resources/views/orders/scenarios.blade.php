@@ -175,7 +175,7 @@
                                     <th>COSTO %</th>
                                     <th>CANT. POR</th>
                                     <th>CANT. PED (KG)</th>
-                                    <th>LARGO (CM)</th>
+                                    <th>LARGO (M)</th>
                                     <th>M2</th>
                                     <th>PESO TOTAL (KG)</th>
                                 </tr>
@@ -225,7 +225,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            
+                            <!--
                             <div class="col-md-4">
                                 <table class="table table-sm table-bordered">
                                     <tr>
@@ -238,7 +238,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            
+                            !-->
                             <div class="col-md-4">
                                 <table class="table table-sm table-bordered">
                                     <tr>
