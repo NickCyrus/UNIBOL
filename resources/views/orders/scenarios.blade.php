@@ -193,7 +193,7 @@
                                     <td>{{ number_format($producto['costo'], 2) }}%</td>
                                     <td>{{ number_format($producto['cantidad'] / $grupo['peso_total'], 4) }}</td>
                                     <td>{{ number_format($producto['cantidad'], 2) }}</td>
-                                    <td>{{ number_format((($producto['largo'] * 100) / 100), 2) }} M</td>
+                                    <td>{{ number_format((($producto['largo'] / 100)), 2) }} M</td>
                                     <td>{{ number_format($producto['m2'], 2) }}</td>
                                     <td>{{ number_format($producto['peso_total'], 2) }}</td>
                                 </tr>
