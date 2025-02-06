@@ -53,7 +53,7 @@ class OrderController extends Controller
         foreach ($gramajes as $gramaje) {
             $escenarios[$gramaje] = $this->procesarGramaje($gramaje, $maxRebobinadora);
         }
-
+ 
         return view('orders.scenarios', [
             'escenarios' => $escenarios,
             'maxRebobinadora' => $maxRebobinadora,
