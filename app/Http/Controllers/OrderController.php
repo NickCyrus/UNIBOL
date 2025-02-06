@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::with('inventory')->get();
-        return view('orders.index', compact('orders'));
+        return view('orders.index', ['query'=> Order::query(), 'orders'=>$orders]);
     }
 
     public function importExcel(Request $request)
