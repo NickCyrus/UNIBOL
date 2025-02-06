@@ -173,13 +173,13 @@
                                     <th>GRAMAGE</th>
                                     <th># BOBINA</th>
                                     <th>ANCHO (CM)</th>
+                                    <th class="bg-unibol text-white">LARGO (M)</th>
+                                    <th class="bg-unibol text-white">M2</th>
+                                    <th class="bg-unibol text-white" >PESO TOTAL (KG)</th>
                                     <th>TOTAL (CM)</th>
                                     <th>COSTO %</th>
                                     <th>CANT. POR</th>
                                     <th>CANT. PED (KG)</th>
-                                    <th>LARGO (M)</th>
-                                    <th>M2</th>
-                                    <th>PESO TOTAL (KG)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -191,13 +191,13 @@
                                     <td>{{ $producto['gramaje'] }}</td>
                                     <td>{{ $producto['bobinas'] }}</td>
                                     <td>{{ $producto['ancho'] }} CM</td>
+                                    <td>{{ number_format((($producto['largo'] / 100)),0) }} M</td>
+                                    <td>{{ number_format($producto['m2'], 0) }}</td>
+                                    <td>{{ number_format($producto['peso_total'], 0) }}</td>
                                     <td>{{ $producto['total_cm'] }} CM</td>
                                     <td>{{ number_format($producto['costo'], 2) }}%</td>
                                     <td>{{ number_format($producto['cantidad'] / $grupo['peso_total'], 4) }}</td>
-                                    <td>{{ number_format($producto['cantidad'], 2) }}</td>
-                                    <td>{{ number_format((($producto['largo'] / 100)),0) }} M</td>
-                                    <td>{{ number_format($producto['m2'], 2) }}</td>
-                                    <td>{{ number_format($producto['peso_total'], 2) }}</td>
+                                    <td>{{ number_format($producto['cantidad'], 0) }}</td>   
                                 </tr>
                                 @endforeach
                                 @for($i = count($grupo['productos']); $i < 4; $i++)
