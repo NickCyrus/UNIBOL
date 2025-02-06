@@ -142,7 +142,9 @@
         </div>
         <div class="card">
             <div class="card-body">
-                 <h4>Escenarios de Producción</h4>
+                <center>
+                    <h4><img src="{{asset('assets/img/artificial-intelligence.png')}}"  width="50" /> GENERACIÓN DE ESCENARIOS</h4>
+                </center>
 <div class="card-body">
             @foreach($escenarios as $gramaje => $grupos)
             <div class="escenario-gramaje mb-5">
