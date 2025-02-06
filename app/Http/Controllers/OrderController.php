@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::with('inventory')->get();
-        return view('orders.index', ['query'=> Order::query(), 'orders'=>$orders]);
+        return view('orders.index', ['orders'=>$orders]);
     }
 
     public function importExcel(Request $request)
@@ -59,7 +59,8 @@ class OrderController extends Controller
             'maxRebobinadora' => $maxRebobinadora,
             'maxPapelera' => $maxPapelera,
             'diametroCliente' => $diametroCliente,
-            'gramajeCliente' => $gramajeCliente
+            'gramajeCliente' => $gramajeCliente,
+            'query'=> Order::query()
         ]);
     }
 
