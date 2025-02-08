@@ -69,6 +69,7 @@ class OrderController extends Controller
         $productos = Order::with('inventory')
             ->whereHas('inventory', fn($q) => $q->where('g', $gramaje))
             ->where('saldo', '<', 0)
+            ->where('saldo', '<', -500)
             ->get()
             ->sortByDesc('inventory.cm');
 

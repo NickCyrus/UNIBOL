@@ -19936,3 +19936,20 @@ a.bg-vimeo:hover,a.bg-vimeo:focus{
 .footer.bg-lighter hr{
   border-color:rgba(105,122,141,.076604902)
 }
+
+.btn-link {
+  text-decoration: none; 
+  color: #007bff;
+  font-size: 1.25rem; 
+}
+
+.btn-link:hover {
+  color: #0056b3; 
+}
+
+.collapse-content {
+  margin-top: 10px; 
+  padding: 10px; 
+  border: 1px solid #ddd; 
+  border-radius: 5px;
+}
