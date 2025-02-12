@@ -50,9 +50,17 @@ class OrderController extends Controller
             ->get()
             ->pluck('g');
 
-        foreach ($gramajes as $gramaje) {
-            $escenarios[$gramaje] = $this->procesarGramaje($gramaje, $maxRebobinadora);
-        }
+            foreach ($gramajes as $gramaje) {
+                $grupos = $this->procesarGramaje($gramaje, $maxRebobinadora);
+                
+                $gruposFiltrados = array_filter($grupos, function($grupo) {
+                    return $grupo['eficiencia'] > 90;
+                });
+        
+                if (!empty($gruposFiltrados)) {
+                    $escenarios[$gramaje] = $gruposFiltrados;
+                }
+            }
  
         return view('orders.scenarios', [
             'escenarios' => $escenarios,
